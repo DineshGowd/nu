@@ -78,6 +78,9 @@ main {
   .nav_hamberger {
     display: none;
   }
+  header{
+    margin: 20px;
+  }
 }
 hr {
   width: 100%;
@@ -111,6 +114,23 @@ hr {
   }
   .nav_linkitems {
     border: 0px;
+  }
+  header{
+    margin: 30px;
+  }
+  .btn{
+    all: unset;
+    border:1px solid rgb(177, 145, 145);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .btn:hover > a{
+   color: white;
+  }
+  .btn:hover{
+   color: white;
+   background-color: black;
   }
 }
 
