@@ -35,7 +35,7 @@ a {
   text-decoration: none;
   color: black;
 }
-figure{
+figure {
   margin: 5px 10px;
 }
 
@@ -79,9 +79,12 @@ main {
     display: none;
   }
 }
+hr {
+  width: 100%;
+}
 
 @media (max-width: 1025px) {
-  h1{
+  h1 {
     font-size: 25px;
   }
   nav {
@@ -98,15 +101,15 @@ main {
     margin: 10px;
   }
   .nav_hamberger {
-    display: inline ;
+    display: inline;
     position: absolute;
     right: 15px;
     top: 15px;
   }
-  .nav_hamberger:hover + .nav_links{
-      display: inline;
+  .nav_hamberger:hover + .nav_links {
+    display: inline;
   }
-  .nav_linkitems{
+  .nav_linkitems {
     border: 0px;
   }
 }
@@ -119,5 +122,4 @@ img {
   width: 100%;
   max-width: 100%;
   border-radius: 20px;
-
 }
