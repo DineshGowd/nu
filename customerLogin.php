@@ -57,24 +57,34 @@ if (isset($_POST['email'], $_POST['password'])) {
 
         <div class="nav_links">
             <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span><span class="nav_linkitems"><a href="./booking.php"> Booking</a></span>
+            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
             <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
             <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./createCustomer.php"> Customer Signup</a></span>
-            <span class="nav_linkitems"><a href="./customerLogin.php"> Customer Login</a></span>
             <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
+            <?php
+            if (isset($_SESSION['logged_in'])) {
+                echo "<form action='logout.php' method='post'>
+                        <button type='submit'>Logout</button>
+                    </form>";
+            } else {
+                echo  "<span class='nav_linkitems'><a href='./createCustomer.php'> Customer Signup</a></span>
+                <span class='nav_linkitems'><a href='./customerLogin.php'> Customer Login</a></span>";
+            }
+            ?>
         </div>
     </nav>
-    <div class="customerForm">
+    <div class="customForm">
         <h1>Customer Login</h1>
         <form method="post" action="customerLogin.php">
-            <label for="email">Email:
+            <label for="email">
+                <span>Email:</span>
                 <input type="email" id="email" name="email" required>
             </label><br>
-            <label for="password">Password:
+            <label for="password">
+                <span>Password:</span>
                 <input type="password" id="password" name="password" required>
             </label><br>
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
         </form>
     </div>
 </body>

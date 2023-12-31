@@ -227,14 +227,32 @@ img {
   height: 150px;
 }
 
-.customerForm form {
+.customForm form {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
   align-items: center;
   margin: auto;
+  font-size: 18px;
 }
-.customerForm form label {
-  display: block;
+.customForm form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: inherit;
+}
+.customForm form label input[type="date"] {
+  width: 163px;
+}
+.customForm form button {
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.customForm .booking {
+  width: 400px;
 }
