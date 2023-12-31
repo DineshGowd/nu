@@ -18,20 +18,26 @@
 
         <div class="nav_links">
             <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
+            <span class="nav_linkitems"><a href="./about.php"> About</a></span><span class="nav_linkitems"><a href="./booking.php"> Booking</a></span>
             <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
             <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./customer.php"> Customer Signup</a></span>
+            <span class="nav_linkitems"><a href="./createCustomer.php"> Customer Signup</a></span>
             <span class="nav_linkitems"><a href="./customerLogin.php"> Customer Login</a></span>
             <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
         </div>
     </nav>
     <div class="customerForm">
         <h1>Customer Registration</h1>
-        <form action="insert.php" method="post">
-            <label for="name">Name:
-                <input type="text" id="name" name="name" required>
+        <form action="insertCustomer.php" method="post">
+            <label for="forename">ForeName:
+                <input type="text" id="forename" name="forename" required>
             </label>
+            <label for="surname">SurName:
+                <input type="text" id="surname" name="surname" required>
+            </label>
+            <label for="dateofbirth">Date of Birth:
+                <input type="date" id="dateofbirth" name="dateofbirth" required>
+            </label><br>
             <label for="email">Email:
                 <input type="email" id="email" name="email" required>
             </label><br>

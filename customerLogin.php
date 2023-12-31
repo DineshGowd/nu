@@ -4,21 +4,31 @@ include("db_connect.php"); // Assuming database connection details are in this f
 if (isset($_POST['email'], $_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
     // Securely check credentials against the database
-    $sql = "SELECT * FROM customers WHERE email = ? AND password = ?";
+    $sql = "SELECT * FROM customers WHERE customer_email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password); // Prevent SQL injection
+    $stmt->bind_param("s", $email); // Prevent SQL injection
     $stmt->execute();
     $result = $stmt->get_result();
-    echo "$email, $password ";
+    echo "$email ";
 
     if ($result->num_rows > 0) {
-        // Successful login
-        session_start();
-        $_SESSION['logged_in'] = true;
-        $_SESSION['email'] = $email; // Store user information in session
-        header("Location: index.php"); // Redirect to protected area
-        exit();
+        $row = $result->fetch_assoc();
+        $stored_hash = $row['password_hash'];
+        echo password_verify($password, $stored_hash);
+        echo $password, $stored_hash;
+        // Verify password using password_verify()
+        if (password_verify($password, $stored_hash)) { // Successful login
+            session_start();
+            $_SESSION['logged_in'] = true;
+            $_SESSION['email'] = $email; // Store user information in session
+            header("Location: index.php"); // Redirect to protected area
+            exit();
+        } else {
+            // Invalid password
+            echo "Invalid username or password";
+        }
     } else {
         echo "Invalid email or password.";
     }
@@ -47,10 +57,10 @@ if (isset($_POST['email'], $_POST['password'])) {
 
         <div class="nav_links">
             <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
+            <span class="nav_linkitems"><a href="./about.php"> About</a></span><span class="nav_linkitems"><a href="./booking.php"> Booking</a></span>
             <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
             <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./customer.php"> Customer Signup</a></span>
+            <span class="nav_linkitems"><a href="./createCustomer.php"> Customer Signup</a></span>
             <span class="nav_linkitems"><a href="./customerLogin.php"> Customer Login</a></span>
             <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
         </div>

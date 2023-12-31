@@ -15,12 +15,12 @@
       </div>
       <div class="nav_links">
         <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-        <span class="nav_linkitems"><a href="./about.php"> About</a></span>
+        <span class="nav_linkitems"><a href="./about.php"> About</a></span><span class="nav_linkitems"><a href="./booking.php"> Booking</a></span>
         <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
         <span class="nav_linkitems"
           ><a href="./wireframes.php"> WireFrames</a></span
         >
-        <span class="nav_linkitems"><a href="./customer.php"> Customer Signup</a></span>
+        <span class="nav_linkitems"><a href="./createCustomer.php"> Customer Signup</a></span>
             <span class="nav_linkitems"><a href="./customerLogin.php"> Customer Login</a></span>
             <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
       </div>

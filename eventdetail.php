@@ -24,27 +24,30 @@
       <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
     </div>
   </nav>
-  <h1 class="event_list">Events</h1>
+  <h1 class="event_list">Events Details Page</h1>
   <main>
     <?php
     require_once("db_connect.php");
-
+    $event_id = $_GET['event_id'];
     // SQL query to fetch events
-    $sql = "SELECT `eventID`, `event_title`, `description`, `event_date`, `price_per_person`, `event_imagepath` FROM events";
+    $sql = "SELECT `eventID`, `event_title`, `description`, `event_date`, `price_per_person`, `event_imagepath` FROM events where eventID= $event_id ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
       // Output events in a table
-      while ($row = $result->fetch_assoc()) {
-        echo "<div class='imggroup'>
-        <a href=/eventdetail.php?event_id=$row[eventID]>
-          <img src= /assets/Images/{$row['event_imagepath']} alt='Purple stage and excited crowd.'>
+      $event = $result->fetch_assoc();
+      echo "<div class='imggroup'>
+        <a href=/eventdetail.php?event_id=$event[eventID]>
+          <img src= /assets/Images/{$event['event_imagepath']} alt='Purple stage and excited crowd.'>
           <figure>
-            <figcaption>{$row['event_title']}</figcaption>
+            <figcaption>{$event['event_title']}</figcaption>
           </figure>
           </a>
+          <form action='booking.php' method='post'>
+            <input type='hidden' name='eventID' value=$event[eventID]>
+            <button type='submit' name='booking'>Book Now</button>
+          </form>
       </div>";
-      }
     } else {
       echo "No events found.";
     }

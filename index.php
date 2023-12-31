@@ -32,10 +32,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </div>
         <div class="nav_links">
             <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
+            <span class="nav_linkitems"><a href="./about.php"> About</a></span><span class="nav_linkitems"><a href="./booking.php"> Booking</a></span>
             <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
             <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./customer.php"> Customer Signup</a></span>
+            <span class="nav_linkitems"><a href="./createCustomer.php"> Customer Signup</a></span>
             <span class="nav_linkitems"><a href="./customerLogin.php"> Customer Login</a></span>
             <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
             <form action="logout.php" method="post">
@@ -68,7 +68,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         require_once("db_connect.php");
 
         // SQL query to fetch events
-        $sql = "SELECT eventname, eventimage FROM events";
+        $sql = "SELECT `eventID`, `event_title`, `description`, `event_date`, `price_per_person`, `event_imagepath` FROM events";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -76,11 +76,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             while ($row = $result->fetch_assoc()) {
                 // echo $result->num_rows;
                 echo "<div class='imggroup'>
-        <img src= {$row['eventimage']} alt='Purple stage and excited crowd.'>
-        <figure>
-          <figcaption>{$row['eventname']}</figcaption>
-        </figure>
-      </div>";
+                    <img src= /assets/Images/{$row['event_imagepath']} alt='Purple stage and excited crowd.'>
+                    <figure>
+                    <figcaption>{$row['event_title']}</figcaption>
+                    </figure>
+                </div>";
             }
         } else {
             echo "No events found.";
