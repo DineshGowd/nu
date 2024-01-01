@@ -5,6 +5,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header("Location: customerLogin.php"); // Redirect to login page if not logged in
     exit();
 }
+$customerID = $_SESSION["customerID"];
 $eventID = $_POST['eventID'];
 ?>
 
@@ -27,8 +28,8 @@ $eventID = $_POST['eventID'];
     <div class="customForm">
         <h1>Event Booking</h1>
         <form class="booking" action="process_booking.php" method="post">
-            <input hidden type="number" id="eventID" name="eventID" value=<?php echo $_POST['eventID'] ?>>
-            <input hidden type="number" id="customerID" name="customerID" required>
+            <input style="visibility: hidden;" type="number" id="eventID" name="eventID" value=<?php echo $eventID ?> required>
+            <input style="visibility: hidden;" type="number" id="customerID" name="customerID" value=<?php echo $customerID ?> required>
             <label for="number_of_people">
                 <span> Number of People:</span>
                 <input type="number" id="number_of_people" name="number_of_people" min="1" required>
@@ -36,7 +37,7 @@ $eventID = $_POST['eventID'];
             </label>
             <label for="total_booking_cost">
                 <span>Total Booking Cost:</span>
-                <input disabled type="number" id="total_booking_cost" name="total_booking_cost">
+                <input type="number" id="total_booking_cost" name="total_booking_cost">
             </label>
             <label for="booking_notes">
                 <span>Booking Notes:</span>

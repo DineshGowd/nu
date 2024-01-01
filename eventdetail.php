@@ -34,7 +34,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     if ($result->num_rows > 0) {
       // Output events in a table
       $event = $result->fetch_assoc();
-      echo "<div class='imggroup'>
+      echo "<div class='event-details-page'>
+      <div class='imggroup'>
         <a href=/eventdetail.php?event_id=$event[eventID]>
           <img src= /assets/Images/{$event['event_imagepath']} alt='Purple stage and excited crowd.'>
           <figure>
@@ -45,6 +46,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <input type='hidden' name='eventID' value=$event[eventID]>
             <button type='submit' name='booking' class='btnSubmit'>Book Now</button>
           </form>
+      </div>
       </div>";
     } else {
       echo "No events found.";

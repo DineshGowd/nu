@@ -16,6 +16,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $stored_hash = $row['password_hash'];
+        $customerID = $row['customerID'];
         echo password_verify($password, $stored_hash);
         echo $password, $stored_hash;
         // Verify password using password_verify()
@@ -23,6 +24,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             session_start();
             $_SESSION['logged_in'] = true;
             $_SESSION['email'] = $email; // Store user information in session
+            $_SESSION["customerID"] = $customerID; 
             header("Location: index.php"); // Redirect to protected area
             exit();
         } else {

@@ -90,6 +90,15 @@ nav {
   top: 25%;
 }
 
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+
 main {
   display: grid;
   gap: 2rem;
@@ -117,6 +126,13 @@ section > div {
 a {
   margin: 0px;
   text-align: left;
+}
+
+.event-details-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
 }
 @media (min-width: 1025px) {
   nav {
@@ -268,5 +284,5 @@ img {
 }
 
 .customForm .booking {
-  width: 400px;
+  width: calc(100% - 50px);
 }
