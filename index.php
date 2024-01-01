@@ -24,28 +24,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?> -->
 
 <body>
-    <nav>
-        <div class="nav_logo">
-            <img src="./assets/images/logo.jpg" alt="website logo">
-        </div>
-        <div class="nav_links">
-            <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
-            <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
-            <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
-            <?php
-            if (isset($_SESSION['logged_in'])) {
-                echo "<form action='logout.php' method='post'>
-                        <button type='submit'>Logout</button>
-                    </form>";
-            } else {
-                echo  "<span class='nav_linkitems'><a href='./createCustomer.php'> Customer Signup</a></span>
-                <span class='nav_linkitems'><a href='./customerLogin.php'> Customer Login</a></span>";
-            }
-            ?>
-        </div>
-    </nav>
+    <?php include("reuseHTML.php");
+    navigation();
+    ?>
     <div>
         <div class="banner_image">
             <h1 class="banner_text">

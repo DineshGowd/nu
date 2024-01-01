@@ -1,6 +1,11 @@
 <?php
-$eventID = $_POST['eventID'];
+session_start();
 
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: customerLogin.php"); // Redirect to login page if not logged in
+    exit();
+}
+$eventID = $_POST['eventID'];
 ?>
 
 <!DOCTYPE html>
@@ -16,28 +21,9 @@ $eventID = $_POST['eventID'];
 </head>
 
 <body>
-    <nav>
-        <div class="nav_logo">
-            <img src="./assets/images/logo.jpg" alt="website logo">
-        </div>
-        <div class="nav_links">
-            <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
-            <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
-            <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
-            <?php
-            if (isset($_SESSION['logged_in'])) {
-                echo "<form action='logout.php' method='post'>
-                        <button type='submit'>Logout</button>
-                    </form>";
-            } else {
-                echo  "<span class='nav_linkitems'><a href='./createCustomer.php'> Customer Signup</a></span>
-                <span class='nav_linkitems'><a href='./customerLogin.php'> Customer Login</a></span>";
-            }
-            ?>
-        </div>
-    </nav>
+    <?php include("reuseHTML.php");
+    navigation();
+    ?>
     <div class="customForm">
         <h1>Event Booking</h1>
         <form class="booking" action="process_booking.php" method="post">
@@ -60,7 +46,7 @@ $eventID = $_POST['eventID'];
                 <span>Booking Date:</span>
                 <input type="date" id="booking_date" name="booking_date" required>
             </label>
-            <button type="submit">Book Now</button>
+            <button type="submit" class="btnSubmit">Book Now</button>
         </form>
     </div>
 </body>

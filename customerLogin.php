@@ -1,6 +1,6 @@
 <?php
-include("db_connect.php"); // Assuming database connection details are in this file
 
+include("db_connect.php"); // Assuming database connection details are in this file
 if (isset($_POST['email'], $_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -50,31 +50,11 @@ if (isset($_POST['email'], $_POST['password'])) {
 </head>
 
 <body>
-    <nav>
-        <div class="nav_logo">
-            <img src="./assets/images/logo.jpg" alt="website logo">
-        </div>
-
-        <div class="nav_links">
-            <span class="nav_linkitems"><a href="./index.php"> Home</a></span>
-            <span class="nav_linkitems"><a href="./about.php"> About</a></span>
-            <span class="nav_linkitems"><a href="./events.php"> Events</a></span>
-            <span class="nav_linkitems"><a href="./wireframes.php"> WireFrames</a></span>
-            <span class="nav_linkitems"><a href="./credits.php"> Credits</a></span>
-            <?php
-            if (isset($_SESSION['logged_in'])) {
-                echo "<form action='logout.php' method='post'>
-                        <button type='submit'>Logout</button>
-                    </form>";
-            } else {
-                echo  "<span class='nav_linkitems'><a href='./createCustomer.php'> Customer Signup</a></span>
-                <span class='nav_linkitems'><a href='./customerLogin.php'> Customer Login</a></span>";
-            }
-            ?>
-        </div>
-    </nav>
+    <?php include("reuseHTML.php");
+    navigation();
+    ?>
     <div class="customForm">
-        <h1>Customer Login</h1>
+        <h1>Login</h1>
         <form method="post" action="customerLogin.php">
             <label for="email">
                 <span>Email:</span>
